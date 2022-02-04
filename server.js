@@ -17,9 +17,10 @@ const port = process.env.PORT || 3000 || args.port
 fs.readFile('./www/index.html', 'utf8', (error, data) => {
 // If there is an error, put it on the console error, return, and exit with error code 1. 
 // Do not be nice about exiting.
-if(error) {
-    console.error("There has been an error")
-    return process.exit(1)
+if(err) {
+    console.error(err)
+    return 
+    process.exit(1)
 }
 // Define a const `server` as an arrow function using http.createServer. 
 // Use the documentation for the node.js http module. 
@@ -34,12 +35,11 @@ res.end(data)
 })
 // Start the `server` const listening on the port defined by argument in your `port` const. 
 // Put the exact message `Server listening on port ${port}` on the console log. 
-server.listen(port, (error) => {
-if(error) {
-    console.log('Something went wrong', error)
-} else {
+server.listen(port, () => {
+//if(error) {
+//    console.log('Something went wrong', error)
+//} else {
     console.log('Server listening on port ${port}')
-}
 })
 // That's it! You're all done!
 })
